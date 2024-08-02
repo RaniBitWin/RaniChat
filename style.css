@@ -117,7 +117,7 @@ textarea:focus, input:focus {
 :-ms-input-placeholder {  
    color: var(--cor-dark-blue-300); 
 }
-.digitacao__leitura{
+.digitacao__leitura{	
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -133,9 +133,10 @@ textarea:focus, input:focus {
 	height: 18rem;
 }
 
-.digitacao__leitura__advertencias{
+.digitacao__leitura__advertencias{	
 	display: flex;
 	flex-direction: column;
+	justify-content: center;	
 	align-items: center;
 	text-align: center;
 	font-family: var(--fonte-primaria);
@@ -161,7 +162,7 @@ textarea:focus, input:focus {
 	justify-content: top;	
 	text-align: left;
 	width: 90%;
-	height:90%; 
+	height:0; 
 	font-size: 1.5rem;
 	font-family: var(--fonte-primaria);
 	background-color: var(--cor-primaria);	
