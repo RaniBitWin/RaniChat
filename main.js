@@ -36,38 +36,22 @@ function botaoCopiarTexto(){
 	digitacao_leitura_botao.appendChild(botao);
 }
 
-function substituir(vogal,codigo){
-	const digitacao = document.querySelector(".digitacao__conteudo__escrita");
-	if(digitacao.value.indexOf(vogal) != -1){
-		return codigo;		
-	}
-	
-}
-
 function criptografar(){	
 	const digitacao = document.querySelector(".digitacao__conteudo__escrita");
 	const leitura = document.querySelector(".digitacao__leitura__copiar");
 	const digitacao_leitura = document.querySelector(".digitacao__leitura");
-	let texto_criptografado = "";
+	let texto_criptografado = digitacao.value.toLowerCase();	
+	let codificacao = [["e","enter"],["i","imes"],["a","ai"],["o","ober"],["u","ufat"]];
 	
-	for(i=0; i<digitacao.value.length; i++){		
+	for(i=0; i<codificacao.length; i++){		
 		
-		if(digitacao.value.slice(i,i+1) == 'e'){
-			texto_criptografado+=substituir('e',"enter");
-		} else if(digitacao.value.slice(i,i+1) == 'i'){
-			texto_criptografado+=substituir('i',"imes");
-		} else if(digitacao.value.slice(i,i+1) == 'a'){
-			texto_criptografado+=substituir('a',"ai");
-		} else if(digitacao.value.slice(i,i+1) == 'o'){
-			texto_criptografado+=substituir('o',"ober");
-		} else if(digitacao.value.slice(i,i+1) == 'u'){
-			texto_criptografado+=substituir('u',"ufat");
-		} else{
-			texto_criptografado+=digitacao.value.slice(i, i+1);
-		}		
+		if(texto_criptografado.includes(codificacao[i][0])){
+			texto_criptografado = texto_criptografado.replaceAll(codificacao[i][0], codificacao[i][1]);					
+		}
 	}	
 	apagar();
-	digitacao_leitura.style.justifyContent = "space-between";	
+	digitacao_leitura.style.justifyContent = "space-between";
+    leitura.style.height = "90%";	
 	leitura.innerText = texto_criptografado;	
 	botaoCopiarTexto();
 	
@@ -77,27 +61,20 @@ function descriptografar(){
 	const digitacao = document.querySelector(".digitacao__conteudo__escrita");
 	const leitura = document.querySelector(".digitacao__leitura__copiar");
 	const digitacao_leitura = document.querySelector(".digitacao__leitura");	
-	let texto_descriptografado = digitacao.value.slice(0);
+	let texto_descriptografado = digitacao.value.toLowerCase();	
+	let codificacao = [["e","enter"],["i","imes"],["a","ai"],["o","ober"],["u","ufat"]];
 	
-	for(i=0; i<digitacao.value.length; i++){		
+	for(i=0; i<codificacao.length; i++){		
 		
-		if(digitacao.value.slice(i,i+5) == "enter"){			
-			texto_descriptografado=texto_descriptografado.replace("enter", 'e');
-		} else if(digitacao.value.slice(i,i+4) == "imes"){			
-			texto_descriptografado=texto_descriptografado.replace("imes", 'i');
-		} else if(digitacao.value.slice(i,i+2) == "ai"){			
-			texto_descriptografado=texto_descriptografado.replace("ai", 'a');
-		} else if(digitacao.value.slice(i,i+4) == "ober"){			
-			texto_descriptografado=texto_descriptografado.replace("ober", 'o');
-		} else if(digitacao.value.slice(i,i+4) == "ufat"){			
-			texto_descriptografado=texto_descriptografado.replace("ufat", 'u');
-		} 
-	}		
+		if(texto_descriptografado.includes(codificacao[i][1])){
+			texto_descriptografado = texto_descriptografado.replaceAll(codificacao[i][1], codificacao[i][0]);					
+		}
+	}	
 	apagar();
-	digitacao_leitura.style.justifyContent = "space-between";	
+	digitacao_leitura.style.justifyContent = "space-between";
+	leitura.style.height = "90%";
 	leitura.innerText = texto_descriptografado;	
 	botaoCopiarTexto();
 	
 }
-
 
